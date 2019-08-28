@@ -1,4 +1,5 @@
 class UI {
+  // Most of the time need constructor
   constructor() {
     this.ingredient = document.getElementById('ingredient');
   }
@@ -16,14 +17,5 @@ class UI {
 
     <input type="submit" value="Add Ingredient" class="btn Two" />
   </div>`;
-
-    const one = document.getElementById('one');
-    const two = document.getElementById('one');
-    const three = document.getElementById('one');
-    const four = document.getElementById('one');
-
-    const eventListner = addEventListener('click', sendItems);
-
-    function sendItems() {}
   }
 }

@@ -1,8 +1,12 @@
 const form = document.getElementById('item-form'); //  This will grab the value from input becasue the type is submit
 const itemInput = document.getElementById('item'); // This Where the user will type
 const filter = document.getElementById('filter');
-const itemList = document.querySelector('.collection');
+const itemList = document.getElementsByClassName('collection');
 const clearItemsBtn = document.querySelector('.clear-items');
+const add = document.getElementById('add');
+const emptySpace = document.getElementById('emptySpace');
+const ingredient = document.getElementById('ingredient');
+const submitBtn = document.getElementById('submit');
 
 const ui = new UI();
 //------
@@ -11,39 +15,19 @@ const ui = new UI();
 
 loadEventListeners();
 function loadEventListeners() {
-  form.addEventListener('submit', addItem);
-  itemList.addEventListener('click', removeTask);
-  clearItemsBtn.addEventListener('click', removeItems);
+  // causing the entire form to submit
+  // form.addEventListener('submit', addItem);
+  // itemList[0].addEventListener('click', removeTask);
+
+  // clearItemsBtn.addEventListener('click', removeItems);
+  add.addEventListener('click', addIngredeint);
+  submitBtn.addEventListener('click', addItem);
 }
 
 function addItem(e) {
-  if (itemInput.value === '') {
+  if (itemInput.value === '' && itemInput.value === '') {
     alert('Please add Item');
   }
-
-  // After the Item is submited we need to add it to the items list
-  const li = document.createElement('li');
-  // Class Name given to New Element
-  li.className = 'collection-item';
-  // Creating a text node to hold the value in Ul element
-  li.appendChild(document.createTextNode(itemInput.value));
-  itemList.appendChild(li);
-  const link = document.createElement('a');
-  // Add class
-  link.className = 'delete-item secondary-content';
-  // Add icon html
-  link.innerHTML = '<i class="fa fa-remove"></i>';
-  // Append the link to li
-  li.appendChild(link);
-  ui.showIngredient();
-  // Append li to ul
-  itemList.appendChild(li);
-
-  // in ui i can pass parameter and then i can call it later so once the new item gets added it automatically shows UL
-
-  //-----------------------
-
-  //---------
 
   // Clear input
   itemInput.value = '';
@@ -59,4 +43,16 @@ function removeTask(e) {
       e.target.parentElement.parentElement.parentElement.remove();
     }
   }
+}
+
+// Creating a  Input to store in
+function addIngredeint(e) {
+  e.preventDefault();
+  if (ingredient.value === '' || itemInput.value === '') {
+    alert('Please Fill both of the fields');
+    return;
+  }
+  const input = document.createElement('input');
+  input.className = 'inputOne';
+  emptySpace.appendChild(input);
 }
