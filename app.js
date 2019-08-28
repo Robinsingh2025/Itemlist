@@ -29,6 +29,8 @@ function addItem(e) {
     alert('Please add Item');
   }
 
+  // Clear Ingridients Input
+  ingredient[0 - 10].value = '';
   // Clear input
   itemInput.value = '';
 
@@ -54,5 +56,6 @@ function addIngredeint(e) {
   }
   const input = document.createElement('input');
   input.className = 'inputOne';
+
   emptySpace.appendChild(input);
 }
