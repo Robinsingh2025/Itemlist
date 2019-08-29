@@ -1,7 +1,7 @@
 const form = document.getElementById('item-form'); //  This will grab the value from input becasue the type is submit
 const itemInput = document.getElementById('item'); // This Where the user will type
 const filter = document.getElementById('filter');
-const itemList = document.getElementsByClassName('collection');
+const itemList = document.getElementById('collection');
 const clearItemsBtn = document.querySelector('.clear-items');
 const add = document.getElementById('add');
 const emptySpace = document.getElementById('emptySpace');
@@ -17,7 +17,8 @@ loadEventListeners();
 function loadEventListeners() {
   // causing the entire form to submit
   // form.addEventListener('submit', addItem);
-  // itemList[0].addEventListener('click', removeTask);
+  itemList.addEventListener('click', removeTask);
+  clearItemsBtn.addEventListener('click', clearItems);
 
   // clearItemsBtn.addEventListener('click', removeItems);
   add.addEventListener('click', addIngredeint);
@@ -29,8 +30,33 @@ function addItem(e) {
     alert('Please add Item');
   }
 
-  // Clear Ingridients Input
-  ingredient[0 - 10].value = '';
+  const li = document.createElement('li');
+  li.className = 'collection-item';
+  li.appendChild(document.createTextNode(itemInput.value));
+  itemList.appendChild(li);
+
+  const ingredientli = document.createElement('li');
+  li.className = 'collection-ingredient';
+  li.appendChild(document.createTextNode(ingredient.value));
+  li.appendChild(ingredientli);
+
+  const allItems = {
+    itemName: itemInput.value,
+    itemIngredient: ingredientli.value
+  };
+
+  console.log(allItems);
+  // David Question --------------Should i create a array to hold all the values from the itemInput and also the same thing item ingredient. if we go this route do we need use index to select items.
+  // const itemName = [];
+  // const itemIngrient = [];
+  // function insert() {
+  //   itemName.push(itemInput.value);
+  //   itemIngrient.push(ingredient.value);
+  //   console.log(itemName + itemIngrient);
+  // }
+
+  // insert();
+
   // Clear input
   itemInput.value = '';
 
@@ -59,3 +85,5 @@ function addIngredeint(e) {
 
   emptySpace.appendChild(input);
 }
+
+function clearItems
